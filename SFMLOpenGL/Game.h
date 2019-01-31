@@ -9,7 +9,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/OpenGL.hpp>
 
-#include <Vector3.h>
+#include <MyVector3.h>
 #include <Matrix3.h>
 
 #define STB_IMAGE_IMPLEMENTATION
@@ -17,7 +17,6 @@
 
 using namespace std;
 using namespace sf;
-using namespace gpp;
 
 class Game
 {

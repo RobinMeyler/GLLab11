@@ -39,10 +39,12 @@ typedef struct
 	float coordinate[3];
 	float color[4];
 	float texel[2];
-} Vertex;
+} Vert;
 
-Vertex vertex[3];
-GLubyte triangles[3];
+Vert vertex[36];
+Vert finalVertex[36];
+MyVector3 trans = { 0,0,1 };
+GLubyte triangles[36];
 
 /* Variable to hold the VBO identifier and shader data */
 GLuint	index,		//Index to draw
@@ -74,52 +76,185 @@ void Game::initialize()
 	isRunning = true;
 	GLint isCompiled = 0;
 	GLint isLinked = 0;
-
+	
 	glewInit();
 
 	DEBUG_MSG(glGetString(GL_VENDOR));
 	DEBUG_MSG(glGetString(GL_RENDERER));
 	DEBUG_MSG(glGetString(GL_VERSION));
 
-	/* Vertices counter-clockwise winding */
-	vertex[0].coordinate[0] = -0.5f;
-	vertex[0].coordinate[1] = -0.5f;
-	vertex[0].coordinate[2] = 0.0f;
+	vertex[0].coordinate[0] = 0.5;
+	vertex[0].coordinate[1] = 0.5;
+	vertex[0].coordinate[2] = -0.5;
 
-	vertex[1].coordinate[0] = -0.5f;
-	vertex[1].coordinate[1] = 0.5f;
-	vertex[1].coordinate[2] = 0.0f;
+	vertex[1].coordinate[0] = -0.5;
+	vertex[1].coordinate[1] = 0.5;
+	vertex[1].coordinate[2] = -0.5;
 
-	vertex[2].coordinate[0] = 0.5f;
-	vertex[2].coordinate[1] = 0.5f;
-	vertex[2].coordinate[2] = 0.0f;
+	vertex[2].coordinate[0] = -0.5;
+	vertex[2].coordinate[1] = -0.5;
+	vertex[2].coordinate[2] = -0.5;
 
-	vertex[0].color[0] = 1.0f;
-	vertex[0].color[1] = 0.0f;
-	vertex[0].color[2] = 0.0f;
-	vertex[0].color[3] = 1.0f;
+	//vertex[3].coordinate[0] = -0.5;
+	//vertex[3].coordinate[1] = -0.5;
+	//vertex[3].coordinate[2] = -0.5;
 
-	vertex[1].color[0] = 1.0f;
-	vertex[1].color[1] = 0.0f;
-	vertex[1].color[2] = 0.0f;
-	vertex[1].color[3] = 1.0f;
+	//vertex[4].coordinate[0] = 0.5;
+	//vertex[4].coordinate[1] = -0.5;
+	//vertex[4].coordinate[2] = -0.5;
 
-	vertex[2].color[0] = 1.0f;
-	vertex[2].color[1] = 0.0f;
-	vertex[2].color[2] = 0.0f;
-	vertex[2].color[3] = 0.0f;
+	//vertex[5].coordinate[0] = 0.5;
+	//vertex[5].coordinate[1] = 0.5;
+	//vertex[5].coordinate[2] = -0.5;
 
-	vertex[0].texel[0] = 0.5f;
-	vertex[0].texel[1] = 0.5f;
+	//// side 1
+	//vertex[6].coordinate[0] = 0.5;
+	//vertex[6].coordinate[1] = 0.5;
+	//vertex[6].coordinate[2] = -0.5;
 
-	vertex[1].texel[0] = 1.0f;
-	vertex[1].texel[1] = 1.0f;
+	//vertex[7].coordinate[0] = 0.5;
+	//vertex[7].coordinate[1] = 0.5;
+	//vertex[7].coordinate[2] = 0.5;
 
-	vertex[2].texel[0] = 1.0f;
-	vertex[2].texel[1] = 0.0f;
+	//vertex[8].coordinate[0] = 0.5;
+	//vertex[8].coordinate[1] = -0.5;
+	//vertex[8].coordinate[2] = 0.5;
+
+	//vertex[9].coordinate[0] = 0.5;
+	//vertex[9].coordinate[1] = -0.5;
+	//vertex[9].coordinate[2] = 0.5;
+
+	//vertex[10].coordinate[0] = 0.5;
+	//vertex[10].coordinate[1] = -0.5;
+	//vertex[10].coordinate[2] = -0.5;
+
+	//vertex[11].coordinate[0] = 0.5;
+	//vertex[11].coordinate[1] = 0.5;
+	//vertex[11].coordinate[2] = -0.5;
+
+	//// side 2
+	//vertex[12].coordinate[0] = -0.5;
+	//vertex[12].coordinate[1] = 0.5;
+	//vertex[12].coordinate[2] = -0.5;
+
+	//vertex[13].coordinate[0] = -0.5;
+	//vertex[13].coordinate[1] = 0.5;
+	//vertex[13].coordinate[2] = 0.5;
+
+	//vertex[14].coordinate[0] = -0.5;
+	//vertex[14].coordinate[1] = -0.5;
+	//vertex[14].coordinate[2] = 0.5;
+
+	//vertex[15].coordinate[0] = -0.5;
+	//vertex[15].coordinate[1] = -0.5;
+	//vertex[15].coordinate[2] = 0.5;
+
+	//vertex[16].coordinate[0] = -0.5;
+	//vertex[16].coordinate[1] = -0.5;
+	//vertex[16].coordinate[2] = -0.5;
+
+	//vertex[17].coordinate[0] = -0.5;
+	//vertex[17].coordinate[1] = 0.5;
+	//vertex[17].coordinate[2] = -0.5;
+
+	//// front
+	//vertex[18].coordinate[0] = -0.5;
+	//vertex[18].coordinate[1] = 0.5;
+	//vertex[18].coordinate[2] = 0.5;
+
+	//vertex[19].coordinate[0] = 0.5;
+	//vertex[19].coordinate[1] = 0.5;
+	//vertex[19].coordinate[2] = 0.5;
+
+	//vertex[20].coordinate[0] = -0.5;
+	//vertex[20].coordinate[1] = -0.5;
+	//vertex[20].coordinate[2] = 0.5;
+
+	//vertex[21].coordinate[0] = -0.5;
+	//vertex[21].coordinate[1] = -0.5;
+	//vertex[21].coordinate[2] = 0.5;
+
+	//vertex[22].coordinate[0] = 0.5;
+	//vertex[22].coordinate[1] = -0.5;
+	//vertex[22].coordinate[2] = 0.5;
+
+	//vertex[23].coordinate[0] = 0.5;
+	//vertex[23].coordinate[1] = 0.5;
+	//vertex[23].coordinate[2] = 0.5;
+
+	//// bottom
+	//vertex[24].coordinate[0] = -0.5;
+	//vertex[24].coordinate[1] = -0.5;
+	//vertex[24].coordinate[2] = -0.5;
+
+	//vertex[25].coordinate[0] = 0.5;
+	//vertex[25].coordinate[1] = -0.5;
+	//vertex[25].coordinate[2] = -0.5;
+
+	//vertex[26].coordinate[0] = 0.5;
+	//vertex[26].coordinate[1] = -0.5;
+	//vertex[26].coordinate[2] = 0.5;
+
+	//vertex[27].coordinate[0] = 0.5;
+	//vertex[27].coordinate[1] = -0.5;
+	//vertex[27].coordinate[2] = 0.5;
+
+	//vertex[28].coordinate[0] = -0.5;
+	//vertex[28].coordinate[1] = -0.5;
+	//vertex[28].coordinate[2] = 0.5;
+
+	//vertex[29].coordinate[0] = -0.5;
+	//vertex[29].coordinate[1] = -0.5;
+	//vertex[29].coordinate[2] = -0.5;
+
+	//// Top
+	//vertex[30].coordinate[0] = -0.5;
+	//vertex[30].coordinate[1] = 0.5;
+	//vertex[30].coordinate[2] = -0.5;
+
+	//vertex[31].coordinate[0] = 0.5;
+	//vertex[31].coordinate[1] = 0.5;
+	//vertex[31].coordinate[2] = -0.5;
+
+	//vertex[32].coordinate[0] = 0.5;
+	//vertex[32].coordinate[1] = 0.5;
+	//vertex[32].coordinate[2] = 0.5;
+
+	//vertex[33].coordinate[0] = 0.5;
+	//vertex[33].coordinate[1] = 0.5;
+	//vertex[33].coordinate[2] = 0.5;
+
+	//vertex[34].coordinate[0] = -0.5;
+	//vertex[34].coordinate[1] = 0.5;
+	//vertex[34].coordinate[2] = 0.5;
+
+	//vertex[35].coordinate[0] = -0.5;
+	//vertex[35].coordinate[1] = 0.5;
+	//vertex[35].coordinate[2] = -0.5;
+
 
 	/*Index of Poly / Triangle to Draw */
-	triangles[0] = 0;   triangles[1] = 1;   triangles[2] = 2;
+	for (int i = 0; i < 36; i++)
+	{
+		triangles[i] = i;
+	}
+
+	for (int i = 0; i < 36; i++)
+	{
+		finalVertex[i] = vertex[i];
+		finalVertex[i].coordinate[0] += trans.x;
+		finalVertex[i].coordinate[1] += trans.y;
+	}
+
+	vertex[2].texel[0] = 0.0f;
+	vertex[2].texel[1] = 0.0f;
+
+	vertex[1].texel[0] = 0.0f;
+	vertex[1].texel[1] = 1.0f;
+
+	vertex[0].texel[0] = 1.0f;
+	vertex[0].texel[1] = 1.0f;
+
 
 	/* Create a new VBO using VBO id */
 	glGenBuffers(1, vbo);
@@ -128,12 +263,12 @@ void Game::initialize()
 	glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
 
 	/* Upload vertex data to GPU */
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * 9, vertex, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vert) * 36, finalVertex, GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 	glGenBuffers(1, &index);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, index);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLubyte) * 3, triangles, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLubyte) * 36, triangles, GL_STATIC_DRAW);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
 	/* Vertex Shader which would normally be loaded from an external file */
@@ -175,7 +310,7 @@ void Game::initialize()
 		"out vec4 fColor;"
 		"void main() {"
 		//"	fColor = vec4(0.0f, 1.0f, 0.0f, 1.0f);"
-		"	fColor = texture(f_texture, texel.st);"
+		"	fColor = texture2D(f_texture, texel);"
 		"}"; //Fragment Shader Src
 
 	DEBUG_MSG("Setting Up Fragment Shader");
@@ -246,7 +381,8 @@ void Game::initialize()
 		height, //Height
 		0, //Border
 		GL_RGBA, //Bitmap
-		GL_UNSIGNED_BYTE, img_data);
+		GL_UNSIGNED_BYTE, 
+		img_data);
 
 	// Find variables in the shader
 	//https://www.khronos.org/opengles/sdk/docs/man/xhtml/glGetAttribLocation.xml
@@ -260,40 +396,94 @@ void Game::update()
 {
 	elapsed = clock.getElapsedTime();
 
-	if (elapsed.asSeconds() >= 1.0f)
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
 	{
-		clock.restart();
-
-		if (!flip)
+		for (int i = 0; i < 36; i++)
 		{
-			flip = true;
-		}
-		else
-			flip = false;
-	}
+			MyVector3 tempVec = { vertex[i].coordinate[0], vertex[i].coordinate[1],  vertex[i].coordinate[2] };// Temp vector to use matrix
+			tempVec = (MyMatrix3::rotationZ(0.004) * tempVec);
 
-	if (flip)
-	{
-		rotationAngle += 0.005f;
-
-		if (rotationAngle > 360.0f)
-		{
-			rotationAngle -= 360.0f;
+			vertex[i].coordinate[0] = tempVec.x;		// Reassign to vertices
+			vertex[i].coordinate[1] = tempVec.y;
+			vertex[i].coordinate[2] = tempVec.z;
 		}
 	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
+	{
+		for (int i = 0; i < 36; i++)
+		{
+			MyVector3 tempVec = { vertex[i].coordinate[0], vertex[i].coordinate[1],  vertex[i].coordinate[2] };// Temp vector to use matrix
+			tempVec = (MyMatrix3::rotationX(0.004) * tempVec);
 
-	//Change vertex data
-	vertex[0].coordinate[0] += -0.0001f;
-	vertex[0].coordinate[1] += -0.0001f;
-	vertex[0].coordinate[2] += -0.0001f;
+			vertex[i].coordinate[0] = tempVec.x;		// Reassign to vertices
+			vertex[i].coordinate[1] = tempVec.y;
+			vertex[i].coordinate[2] = tempVec.z;
+		}
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::C))
+	{
+		for (int i = 0; i < 36; i++)
+		{
+			MyVector3 tempVec = { vertex[i].coordinate[0], vertex[i].coordinate[1],  vertex[i].coordinate[2] };// Temp vector to use matrix
+			tempVec = (MyMatrix3::rotationY(0.004) * tempVec);
 
-	vertex[1].coordinate[0] += -0.0001f;
-	vertex[1].coordinate[1] += -0.0001f;
-	vertex[1].coordinate[2] += -0.0001f;
+			vertex[i].coordinate[0] = tempVec.x;	// Reassign to vertices
+			vertex[i].coordinate[1] = tempVec.y;
+			vertex[i].coordinate[2] = tempVec.z;
+		}
+	}
+	// Scale
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	{
+		for (int i = 0; i < 36; i++)
+		{
+			MyVector3 tempVec = { vertex[i].coordinate[0], vertex[i].coordinate[1],  vertex[i].coordinate[2] };	// Temp vector to use matrix
+			tempVec = (MyMatrix3::scale(0.998) * tempVec);
 
-	vertex[2].coordinate[0] += -0.0001f;
-	vertex[2].coordinate[1] += -0.0001f;
-	vertex[2].coordinate[2] += -0.0001f;
+			vertex[i].coordinate[0] = tempVec.x;		// Reassign to vertices
+			vertex[i].coordinate[1] = tempVec.y;
+			vertex[i].coordinate[2] = tempVec.z;
+		}
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	{
+		for (int i = 0; i < 36; i++)
+		{
+			MyVector3 tempVec = { vertex[i].coordinate[0], vertex[i].coordinate[1], vertex[i].coordinate[2] };			// Temp vector to use matrix
+			tempVec = (MyMatrix3::scale(1.002) * tempVec);
+
+			vertex[i].coordinate[0] = tempVec.x;		// Reassign to vertices
+			vertex[i].coordinate[1] = tempVec.y;
+			vertex[i].coordinate[2] = tempVec.z;
+		}
+	}
+	// Translate
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	{
+		trans = (MyMatrix3::translation(MyVector3{ 0, 0.001 ,0 }) *  trans);
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	{
+		trans = (MyMatrix3::translation(MyVector3{ 0, -0.001 ,0 }) *  trans);
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	{
+		trans = (MyMatrix3::translation(MyVector3{ 0.001, 0 ,0 }) *  trans);
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	{
+		trans = (MyMatrix3::translation(MyVector3{ -0.001, 0 ,0 }) *  trans);
+	}
+	// Update the overall translation
+	for (int i = 0; i < 36; i++)
+	{
+		finalVertex[i] = vertex[i];			// Give color and rotate/scale
+		finalVertex[i].coordinate[0] += trans.x;	// Add XnY of translation
+		finalVertex[i].coordinate[1] += trans.y;
+	}
+
+
+
 
 #if (DEBUG >= 2)
 	DEBUG_MSG("Update up...");
@@ -317,7 +507,7 @@ void Game::render()
 
 	/*	As the data positions will be updated by the this program on the
 		CPU bind the updated data to the GPU for drawing	*/
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * 3, vertex, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vert) * 36, finalVertex, GL_STATIC_DRAW);
 
 	/*	Draw Triangle from VBO	(set where to start from as VBO can contain
 		model components that 'are' and 'are not' to be drawn )	*/
@@ -328,16 +518,16 @@ void Game::render()
 
 	// Set pointers for each parameter
 	// https://www.opengl.org/sdk/docs/man4/html/glVertexAttribPointer.xhtml
-	glVertexAttribPointer(positionID, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
-	glVertexAttribPointer(colorID, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
-	glVertexAttribPointer(texelID, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
+	glVertexAttribPointer(positionID, 3, GL_FLOAT, GL_FALSE, sizeof(Vert), 0);
+	glVertexAttribPointer(colorID, 4, GL_FLOAT, GL_FALSE, sizeof(Vert), 0);
+	glVertexAttribPointer(texelID, 2, GL_FLOAT, GL_FALSE, sizeof(Vert), 0);
 
 	//Enable Arrays
 	glEnableVertexAttribArray(positionID);
 	glEnableVertexAttribArray(colorID);
 	glEnableVertexAttribArray(texelID);
 
-	glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_BYTE, (char*)NULL + 0);
+	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_BYTE, (char*)NULL + 0);
 
 	window.display();
 
