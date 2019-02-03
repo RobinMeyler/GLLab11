@@ -1,0 +1,24 @@
+// This is so I can change images easier
+
+// Texture, red and yellow triangles 
+
+for (int i = 0; i < 36; i = i + 6)
+	{
+		vertex[i].texel[0] = 0.0;
+		vertex[i].texel[1] = 0.0;
+
+		vertex[i + 1].texel[0] = 0.0;
+		vertex[i + 1].texel[1] = 1.0;
+
+		vertex[i + 2].texel[0] = 1.0;
+		vertex[i + 2].texel[1] = 1.0;
+
+		vertex[i + 3].texel[0] = 1.0;
+		vertex[i + 3].texel[1] = 1.0;
+
+		vertex[i + 4].texel[0] = 1.0;
+		vertex[i + 4].texel[1] = 0.0;
+
+		vertex[i + 5].texel[0] = 0.0;
+		vertex[i + 5].texel[1] = 0.0;
+	}

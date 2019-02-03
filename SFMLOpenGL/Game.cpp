@@ -48,16 +48,16 @@ GLubyte triangles[36];
 
 /* Variable to hold the VBO identifier and shader data */
 GLuint	index,		//Index to draw
-		vsid,		//Vertex Shader ID
-		fsid,		//Fragment Shader ID
-		progID,		//Program ID
-		vao = 0,	//Vertex Array ID
-		vbo[1],		// Vertex Buffer ID
-		positionID, //Position ID
-		colorID,	// Color ID
-		to,			// Texture ID 1 to 32
-		textureID,	//Texture ID
-		texelID;	// Texel ID
+vsid,		//Vertex Shader ID
+fsid,		//Fragment Shader ID
+progID,		//Program ID
+vao = 0,	//Vertex Array ID
+vbo[1],		// Vertex Buffer ID
+positionID, //Position ID
+colorID,	// Color ID
+to,			// Texture ID 1 to 32
+textureID,	//Texture ID
+texelID;	// Texel ID
 
 //const string filename = "texture.tga";
 //const string filename = "cube.tga";
@@ -76,7 +76,7 @@ void Game::initialize()
 	isRunning = true;
 	GLint isCompiled = 0;
 	GLint isLinked = 0;
-	
+
 	glewInit();
 
 	DEBUG_MSG(glGetString(GL_VENDOR));
@@ -95,143 +95,150 @@ void Game::initialize()
 	vertex[2].coordinate[1] = -0.5;
 	vertex[2].coordinate[2] = -0.5;
 
-	//vertex[3].coordinate[0] = -0.5;
-	//vertex[3].coordinate[1] = -0.5;
-	//vertex[3].coordinate[2] = -0.5;
+	vertex[3].coordinate[0] = -0.5;
+	vertex[3].coordinate[1] = -0.5;
+	vertex[3].coordinate[2] = -0.5;
 
-	//vertex[4].coordinate[0] = 0.5;
-	//vertex[4].coordinate[1] = -0.5;
-	//vertex[4].coordinate[2] = -0.5;
+	vertex[4].coordinate[0] = 0.5;
+	vertex[4].coordinate[1] = -0.5;
+	vertex[4].coordinate[2] = -0.5;
 
-	//vertex[5].coordinate[0] = 0.5;
-	//vertex[5].coordinate[1] = 0.5;
-	//vertex[5].coordinate[2] = -0.5;
+	vertex[5].coordinate[0] = 0.5;
+	vertex[5].coordinate[1] = 0.5;
+	vertex[5].coordinate[2] = -0.5;
 
-	//// side 1
-	//vertex[6].coordinate[0] = 0.5;
-	//vertex[6].coordinate[1] = 0.5;
-	//vertex[6].coordinate[2] = -0.5;
+	// side 1
+	vertex[6].coordinate[0] = 0.5;
+	vertex[6].coordinate[1] = 0.5;
+	vertex[6].coordinate[2] = -0.5;
 
-	//vertex[7].coordinate[0] = 0.5;
-	//vertex[7].coordinate[1] = 0.5;
-	//vertex[7].coordinate[2] = 0.5;
+	vertex[7].coordinate[0] = 0.5;
+	vertex[7].coordinate[1] = 0.5;
+	vertex[7].coordinate[2] = 0.5;
 
-	//vertex[8].coordinate[0] = 0.5;
-	//vertex[8].coordinate[1] = -0.5;
-	//vertex[8].coordinate[2] = 0.5;
+	vertex[8].coordinate[0] = 0.5;
+	vertex[8].coordinate[1] = -0.5;
+	vertex[8].coordinate[2] = 0.5;
 
-	//vertex[9].coordinate[0] = 0.5;
-	//vertex[9].coordinate[1] = -0.5;
-	//vertex[9].coordinate[2] = 0.5;
+	vertex[9].coordinate[0] = 0.5;
+	vertex[9].coordinate[1] = -0.5;
+	vertex[9].coordinate[2] = 0.5;
 
-	//vertex[10].coordinate[0] = 0.5;
-	//vertex[10].coordinate[1] = -0.5;
-	//vertex[10].coordinate[2] = -0.5;
+	vertex[10].coordinate[0] = 0.5;
+	vertex[10].coordinate[1] = -0.5;
+	vertex[10].coordinate[2] = -0.5;
 
-	//vertex[11].coordinate[0] = 0.5;
-	//vertex[11].coordinate[1] = 0.5;
-	//vertex[11].coordinate[2] = -0.5;
+	vertex[11].coordinate[0] = 0.5;
+	vertex[11].coordinate[1] = 0.5;
+	vertex[11].coordinate[2] = -0.5;
 
-	//// side 2
-	//vertex[12].coordinate[0] = -0.5;
-	//vertex[12].coordinate[1] = 0.5;
-	//vertex[12].coordinate[2] = -0.5;
+	// side 2
+	vertex[12].coordinate[0] = -0.5;
+	vertex[12].coordinate[1] = 0.5;
+	vertex[12].coordinate[2] = -0.5;
 
-	//vertex[13].coordinate[0] = -0.5;
-	//vertex[13].coordinate[1] = 0.5;
-	//vertex[13].coordinate[2] = 0.5;
+	vertex[13].coordinate[0] = -0.5;
+	vertex[13].coordinate[1] = 0.5;
+	vertex[13].coordinate[2] = 0.5;
 
-	//vertex[14].coordinate[0] = -0.5;
-	//vertex[14].coordinate[1] = -0.5;
-	//vertex[14].coordinate[2] = 0.5;
+	vertex[14].coordinate[0] = -0.5;
+	vertex[14].coordinate[1] = -0.5;
+	vertex[14].coordinate[2] = 0.5;
 
-	//vertex[15].coordinate[0] = -0.5;
-	//vertex[15].coordinate[1] = -0.5;
-	//vertex[15].coordinate[2] = 0.5;
+	vertex[15].coordinate[0] = -0.5;
+	vertex[15].coordinate[1] = -0.5;
+	vertex[15].coordinate[2] = 0.5;
 
-	//vertex[16].coordinate[0] = -0.5;
-	//vertex[16].coordinate[1] = -0.5;
-	//vertex[16].coordinate[2] = -0.5;
+	vertex[16].coordinate[0] = -0.5;
+	vertex[16].coordinate[1] = -0.5;
+	vertex[16].coordinate[2] = -0.5;
 
-	//vertex[17].coordinate[0] = -0.5;
-	//vertex[17].coordinate[1] = 0.5;
-	//vertex[17].coordinate[2] = -0.5;
+	vertex[17].coordinate[0] = -0.5;
+	vertex[17].coordinate[1] = 0.5;
+	vertex[17].coordinate[2] = -0.5;
 
-	//// front
-	//vertex[18].coordinate[0] = -0.5;
-	//vertex[18].coordinate[1] = 0.5;
-	//vertex[18].coordinate[2] = 0.5;
+	// front
+	vertex[18].coordinate[0] = -0.5;
+	vertex[18].coordinate[1] = 0.5;
+	vertex[18].coordinate[2] = 0.5;
 
-	//vertex[19].coordinate[0] = 0.5;
-	//vertex[19].coordinate[1] = 0.5;
-	//vertex[19].coordinate[2] = 0.5;
+	vertex[19].coordinate[0] = 0.5;
+	vertex[19].coordinate[1] = 0.5;
+	vertex[19].coordinate[2] = 0.5;
 
-	//vertex[20].coordinate[0] = -0.5;
-	//vertex[20].coordinate[1] = -0.5;
-	//vertex[20].coordinate[2] = 0.5;
+	vertex[20].coordinate[0] = -0.5;
+	vertex[20].coordinate[1] = -0.5;
+	vertex[20].coordinate[2] = 0.5;
 
-	//vertex[21].coordinate[0] = -0.5;
-	//vertex[21].coordinate[1] = -0.5;
-	//vertex[21].coordinate[2] = 0.5;
+	vertex[21].coordinate[0] = -0.5;
+	vertex[21].coordinate[1] = -0.5;
+	vertex[21].coordinate[2] = 0.5;
 
-	//vertex[22].coordinate[0] = 0.5;
-	//vertex[22].coordinate[1] = -0.5;
-	//vertex[22].coordinate[2] = 0.5;
+	vertex[22].coordinate[0] = 0.5;
+	vertex[22].coordinate[1] = -0.5;
+	vertex[22].coordinate[2] = 0.5;
 
-	//vertex[23].coordinate[0] = 0.5;
-	//vertex[23].coordinate[1] = 0.5;
-	//vertex[23].coordinate[2] = 0.5;
+	vertex[23].coordinate[0] = 0.5;
+	vertex[23].coordinate[1] = 0.5;
+	vertex[23].coordinate[2] = 0.5;
 
-	//// bottom
-	//vertex[24].coordinate[0] = -0.5;
-	//vertex[24].coordinate[1] = -0.5;
-	//vertex[24].coordinate[2] = -0.5;
+	// bottom
+	vertex[24].coordinate[0] = -0.5;
+	vertex[24].coordinate[1] = -0.5;
+	vertex[24].coordinate[2] = -0.5;
 
-	//vertex[25].coordinate[0] = 0.5;
-	//vertex[25].coordinate[1] = -0.5;
-	//vertex[25].coordinate[2] = -0.5;
+	vertex[25].coordinate[0] = 0.5;
+	vertex[25].coordinate[1] = -0.5;
+	vertex[25].coordinate[2] = -0.5;
 
-	//vertex[26].coordinate[0] = 0.5;
-	//vertex[26].coordinate[1] = -0.5;
-	//vertex[26].coordinate[2] = 0.5;
+	vertex[26].coordinate[0] = 0.5;
+	vertex[26].coordinate[1] = -0.5;
+	vertex[26].coordinate[2] = 0.5;
 
-	//vertex[27].coordinate[0] = 0.5;
-	//vertex[27].coordinate[1] = -0.5;
-	//vertex[27].coordinate[2] = 0.5;
+	vertex[27].coordinate[0] = 0.5;
+	vertex[27].coordinate[1] = -0.5;
+	vertex[27].coordinate[2] = 0.5;
 
-	//vertex[28].coordinate[0] = -0.5;
-	//vertex[28].coordinate[1] = -0.5;
-	//vertex[28].coordinate[2] = 0.5;
+	vertex[28].coordinate[0] = -0.5;
+	vertex[28].coordinate[1] = -0.5;
+	vertex[28].coordinate[2] = 0.5;
 
-	//vertex[29].coordinate[0] = -0.5;
-	//vertex[29].coordinate[1] = -0.5;
-	//vertex[29].coordinate[2] = -0.5;
+	vertex[29].coordinate[0] = -0.5;
+	vertex[29].coordinate[1] = -0.5;
+	vertex[29].coordinate[2] = -0.5;
 
-	//// Top
-	//vertex[30].coordinate[0] = -0.5;
-	//vertex[30].coordinate[1] = 0.5;
-	//vertex[30].coordinate[2] = -0.5;
+	// Top
+	vertex[30].coordinate[0] = -0.5;
+	vertex[30].coordinate[1] = 0.5;
+	vertex[30].coordinate[2] = -0.5;
 
-	//vertex[31].coordinate[0] = 0.5;
-	//vertex[31].coordinate[1] = 0.5;
-	//vertex[31].coordinate[2] = -0.5;
+	vertex[31].coordinate[0] = 0.5;
+	vertex[31].coordinate[1] = 0.5;
+	vertex[31].coordinate[2] = -0.5;
 
-	//vertex[32].coordinate[0] = 0.5;
-	//vertex[32].coordinate[1] = 0.5;
-	//vertex[32].coordinate[2] = 0.5;
+	vertex[32].coordinate[0] = 0.5;
+	vertex[32].coordinate[1] = 0.5;
+	vertex[32].coordinate[2] = 0.5;
 
-	//vertex[33].coordinate[0] = 0.5;
-	//vertex[33].coordinate[1] = 0.5;
-	//vertex[33].coordinate[2] = 0.5;
+	vertex[33].coordinate[0] = 0.5;
+	vertex[33].coordinate[1] = 0.5;
+	vertex[33].coordinate[2] = 0.5;
 
-	//vertex[34].coordinate[0] = -0.5;
-	//vertex[34].coordinate[1] = 0.5;
-	//vertex[34].coordinate[2] = 0.5;
+	vertex[34].coordinate[0] = -0.5;
+	vertex[34].coordinate[1] = 0.5;
+	vertex[34].coordinate[2] = 0.5;
 
-	//vertex[35].coordinate[0] = -0.5;
-	//vertex[35].coordinate[1] = 0.5;
-	//vertex[35].coordinate[2] = -0.5;
+	vertex[35].coordinate[0] = -0.5;
+	vertex[35].coordinate[1] = 0.5;
+	vertex[35].coordinate[2] = -0.5;
 
+	for (int i = 0; i < 36; i++)
+	{
+		vertex[i].color[0] = (rand() % 11) / 10.0f;
+		vertex[i].color[1] = (rand() % 11) / 10.0f;
+		vertex[i].color[2] = (rand() % 11) / 10.0f;
+		vertex[i].color[3] = 1.0f;
+	}
 
 	/*Index of Poly / Triangle to Draw */
 	for (int i = 0; i < 36; i++)
@@ -246,14 +253,27 @@ void Game::initialize()
 		finalVertex[i].coordinate[1] += trans.y;
 	}
 
-	vertex[2].texel[0] = 0.0f;
-	vertex[2].texel[1] = 0.0f;
 
-	vertex[1].texel[0] = 0.0f;
-	vertex[1].texel[1] = 1.0f;
+	for (int i = 0; i < 36; i = i + 6)
+	{
+		vertex[i].texel[0] = 0.0;
+		vertex[i].texel[1] = 0.0;
 
-	vertex[0].texel[0] = 1.0f;
-	vertex[0].texel[1] = 1.0f;
+		vertex[i + 1].texel[0] = 0.0;
+		vertex[i + 1].texel[1] = 1.0;
+
+		vertex[i + 2].texel[0] = 1.0;
+		vertex[i + 2].texel[1] = 1.0;
+
+		vertex[i + 3].texel[0] = 1.0;
+		vertex[i + 3].texel[1] = 1.0;
+
+		vertex[i + 4].texel[0] = 1.0;
+		vertex[i + 4].texel[1] = 0.0;
+
+		vertex[i + 5].texel[0] = 0.0;
+		vertex[i + 5].texel[1] = 0.0;
+	}
 
 
 	/* Create a new VBO using VBO id */
@@ -271,17 +291,32 @@ void Game::initialize()
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLubyte) * 36, triangles, GL_STATIC_DRAW);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
+	//layout(location = 0) in vec3 aPos;
+	//layout(location = 1) in vec3 aColor;
+	//layout(location = 2) in vec2 aTexCoord;
+
+	//out vec3 ourColor;
+	//out vec2 TexCoord;
+
+	//void main()
+	//{
+	//	gl_Position = vec4(aPos, 1.0);
+	//	ourColor = aColor;
+	//	TexCoord = aTexCoord;
+	//}
+
 	/* Vertex Shader which would normally be loaded from an external file */
 	const char* vs_src = "#version 400\n\r"
-		"in vec4 sv_position;"
-		"in vec4 sv_color;"
-		"in vec2 sv_texel;"
+		"layout(location = 0) in vec3 sv_position;"
+		"layout(location = 1) in vec4 sv_color;"
+		"layout(location = 2) in vec2 sv_texel;"
+
 		"out vec4 color;"
 		"out vec2 texel;"
 		"void main() {"
 		"	color = sv_color;"
 		"	texel = sv_texel;"
-		"	gl_Position = sv_position;"
+		"	gl_Position = vec4(sv_position, 1.0);"
 		"}"; //Vertex Shader Src
 
 	DEBUG_MSG("Setting Up Vertex Shader");
@@ -310,6 +345,7 @@ void Game::initialize()
 		"out vec4 fColor;"
 		"void main() {"
 		//"	fColor = vec4(0.0f, 1.0f, 0.0f, 1.0f);"
+		//"	fColor = color * texture2D(f_texture, texel);"
 		"	fColor = texture2D(f_texture, texel);"
 		"}"; //Fragment Shader Src
 
@@ -364,14 +400,15 @@ void Game::initialize()
 
 	//Wrap around
 	//https://www.khronos.org/opengles/sdk/docs/man/xhtml/glTexParameter.xml
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
 
 	//Filtering
 	//https://www.khronos.org/opengles/sdk/docs/man/xhtml/glTexParameter.xml
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	float borderColor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+	glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
 	//Bind to OpenGL
 	//https://www.khronos.org/opengles/sdk/docs/man/xhtml/glTexImage2D.xml
 	glTexImage2D(GL_TEXTURE_2D, //2D Texture Image
@@ -381,7 +418,7 @@ void Game::initialize()
 		height, //Height
 		0, //Border
 		GL_RGBA, //Bitmap
-		GL_UNSIGNED_BYTE, 
+		GL_UNSIGNED_BYTE,
 		img_data);
 
 	// Find variables in the shader
@@ -390,12 +427,13 @@ void Game::initialize()
 	colorID = glGetAttribLocation(progID, "sv_color");
 	texelID = glGetAttribLocation(progID, "sv_texel");
 	textureID = glGetUniformLocation(progID, "f_texture");
+	glBindAttribLocation(progID, texelID, "sv_position");
 }
 
 void Game::update()
 {
 	elapsed = clock.getElapsedTime();
-
+	glUseProgram(progID);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
 	{
 		for (int i = 0; i < 36; i++)
@@ -489,7 +527,7 @@ void Game::update()
 	DEBUG_MSG("Update up...");
 #endif
 
-}
+	}
 
 void Game::render()
 {
@@ -512,15 +550,15 @@ void Game::render()
 	/*	Draw Triangle from VBO	(set where to start from as VBO can contain
 		model components that 'are' and 'are not' to be drawn )	*/
 
-	//Set Active Texture .... 32
+		//Set Active Texture .... 32
 	glActiveTexture(GL_TEXTURE0);
 	glUniform1i(textureID, 0);
 
 	// Set pointers for each parameter
 	// https://www.opengl.org/sdk/docs/man4/html/glVertexAttribPointer.xhtml
 	glVertexAttribPointer(positionID, 3, GL_FLOAT, GL_FALSE, sizeof(Vert), 0);
-	glVertexAttribPointer(colorID, 4, GL_FLOAT, GL_FALSE, sizeof(Vert), 0);
-	glVertexAttribPointer(texelID, 2, GL_FLOAT, GL_FALSE, sizeof(Vert), 0);
+	glVertexAttribPointer(colorID, 4, GL_FLOAT, GL_FALSE, sizeof(Vert), (void*)(3 * sizeof(float)));
+	glVertexAttribPointer(texelID, 2, GL_FLOAT, GL_FALSE, sizeof(Vert), (void*)(7 * sizeof(float)));
 
 	//Enable Arrays
 	glEnableVertexAttribArray(positionID);
