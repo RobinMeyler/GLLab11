@@ -62,7 +62,7 @@ texelID;	// Texel ID
 //const string filename = "texture.tga";
 //const string filename = "cube.tga";
 
-const string filename = "texture.tga";
+const string filename = "doggo.tga";
 
 int width; //width of texture
 int height; //height of texture
@@ -83,16 +83,17 @@ void Game::initialize()
 	DEBUG_MSG(glGetString(GL_RENDERER));
 	DEBUG_MSG(glGetString(GL_VERSION));
 
-	vertex[0].coordinate[0] = 0.5;
-	vertex[0].coordinate[1] = 0.5;
+
+	vertex[0].coordinate[0] = -0.5;
+	vertex[0].coordinate[1] = -0.5;
 	vertex[0].coordinate[2] = -0.5;
 
 	vertex[1].coordinate[0] = -0.5;
 	vertex[1].coordinate[1] = 0.5;
 	vertex[1].coordinate[2] = -0.5;
 
-	vertex[2].coordinate[0] = -0.5;
-	vertex[2].coordinate[1] = -0.5;
+	vertex[2].coordinate[0] = 0.5;
+	vertex[2].coordinate[1] = 0.5;
 	vertex[2].coordinate[2] = -0.5;
 
 	vertex[3].coordinate[0] = -0.5;
@@ -157,29 +158,29 @@ void Game::initialize()
 	vertex[17].coordinate[1] = 0.5;
 	vertex[17].coordinate[2] = -0.5;
 
-	// front
+	//// front
 	vertex[18].coordinate[0] = -0.5;
-	vertex[18].coordinate[1] = 0.5;
+	vertex[18].coordinate[1] = -0.5;
 	vertex[18].coordinate[2] = 0.5;
 
-	vertex[19].coordinate[0] = 0.5;
+	vertex[19].coordinate[0] = -0.5;
 	vertex[19].coordinate[1] = 0.5;
 	vertex[19].coordinate[2] = 0.5;
 
-	vertex[20].coordinate[0] = -0.5;
-	vertex[20].coordinate[1] = -0.5;
+	vertex[20].coordinate[0] = 0.5;
+	vertex[20].coordinate[1] = 0.5;
 	vertex[20].coordinate[2] = 0.5;
 
-	vertex[21].coordinate[0] = -0.5;
-	vertex[21].coordinate[1] = -0.5;
+	vertex[21].coordinate[0] = 0.5;
+	vertex[21].coordinate[1] = 0.5;
 	vertex[21].coordinate[2] = 0.5;
 
 	vertex[22].coordinate[0] = 0.5;
 	vertex[22].coordinate[1] = -0.5;
 	vertex[22].coordinate[2] = 0.5;
 
-	vertex[23].coordinate[0] = 0.5;
-	vertex[23].coordinate[1] = 0.5;
+	vertex[23].coordinate[0] = -0.5;
+	vertex[23].coordinate[1] = -0.5;
 	vertex[23].coordinate[2] = 0.5;
 
 	// bottom
@@ -254,25 +255,27 @@ void Game::initialize()
 	}
 
 
+
+
 	for (int i = 0; i < 36; i = i + 6)
 	{
 		vertex[i].texel[0] = 0.0;
-		vertex[i].texel[1] = 0.0;
+		vertex[i].texel[1] = 1.0;
 
 		vertex[i + 1].texel[0] = 0.0;
-		vertex[i + 1].texel[1] = 1.0;
+		vertex[i + 1].texel[1] = 0.0;
 
 		vertex[i + 2].texel[0] = 1.0;
-		vertex[i + 2].texel[1] = 1.0;
+		vertex[i + 2].texel[1] = 0.0;
 
 		vertex[i + 3].texel[0] = 1.0;
-		vertex[i + 3].texel[1] = 1.0;
+		vertex[i + 3].texel[1] = 0.0;
 
 		vertex[i + 4].texel[0] = 1.0;
-		vertex[i + 4].texel[1] = 0.0;
+		vertex[i + 4].texel[1] = 1.0;
 
 		vertex[i + 5].texel[0] = 0.0;
-		vertex[i + 5].texel[1] = 0.0;
+		vertex[i + 5].texel[1] = 1.0;
 	}
 
 
@@ -420,7 +423,7 @@ void Game::initialize()
 		GL_RGBA, //Bitmap
 		GL_UNSIGNED_BYTE,
 		img_data);
-
+	glEnable(GL_DEPTH_TEST);
 	// Find variables in the shader
 	//https://www.khronos.org/opengles/sdk/docs/man/xhtml/glGetAttribLocation.xml
 	positionID = glGetAttribLocation(progID, "sv_position");
@@ -537,7 +540,7 @@ void Game::render()
 #endif
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+	
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
 	glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
@@ -559,7 +562,7 @@ void Game::render()
 	glVertexAttribPointer(positionID, 3, GL_FLOAT, GL_FALSE, sizeof(Vert), 0);
 	glVertexAttribPointer(colorID, 4, GL_FLOAT, GL_FALSE, sizeof(Vert), (void*)(3 * sizeof(float)));
 	glVertexAttribPointer(texelID, 2, GL_FLOAT, GL_FALSE, sizeof(Vert), (void*)(7 * sizeof(float)));
-
+	
 	//Enable Arrays
 	glEnableVertexAttribArray(positionID);
 	glEnableVertexAttribArray(colorID);
