@@ -59,8 +59,8 @@ to,			// Texture ID 1 to 32
 textureID,	//Texture ID
 texelID;	// Texel ID
 
-//const string filename = "texture.tga";
-//const string filename = "cube.tga";
+			//const string filename = "texture.tga";
+			//const string filename = "cube.tga";
 
 const string filename = "doggo.tga";
 
@@ -84,104 +84,110 @@ void Game::initialize()
 	DEBUG_MSG(glGetString(GL_VERSION));
 
 
+	// Clockwise
+
+	// Front
 	vertex[0].coordinate[0] = -0.5;
 	vertex[0].coordinate[1] = -0.5;
-	vertex[0].coordinate[2] = -0.5;
+	vertex[0].coordinate[2] = 0.5;
 
-	vertex[1].coordinate[0] = -0.5;
-	vertex[1].coordinate[1] = 0.5;
-	vertex[1].coordinate[2] = -0.5;
+	vertex[1].coordinate[0] = 0.5;
+	vertex[1].coordinate[1] = -0.5;
+	vertex[1].coordinate[2] = 0.5;
 
 	vertex[2].coordinate[0] = 0.5;
 	vertex[2].coordinate[1] = 0.5;
-	vertex[2].coordinate[2] = -0.5;
+	vertex[2].coordinate[2] = 0.5;
 
-	vertex[3].coordinate[0] = -0.5;
-	vertex[3].coordinate[1] = -0.5;
-	vertex[3].coordinate[2] = -0.5;
+	vertex[3].coordinate[0] = 0.5;
+	vertex[3].coordinate[1] = 0.5;
+	vertex[3].coordinate[2] = 0.5;
 
-	vertex[4].coordinate[0] = 0.5;
-	vertex[4].coordinate[1] = -0.5;
-	vertex[4].coordinate[2] = -0.5;
+	vertex[4].coordinate[0] = -0.5;
+	vertex[4].coordinate[1] = 0.5;
+	vertex[4].coordinate[2] = 0.5;
 
-	vertex[5].coordinate[0] = 0.5;
-	vertex[5].coordinate[1] = 0.5;
-	vertex[5].coordinate[2] = -0.5;
+	vertex[5].coordinate[0] = -0.5;
+	vertex[5].coordinate[1] = -0.5;
+	vertex[5].coordinate[2] = 0.5;
 
-	// side 1
+	// right side 
+
 	vertex[6].coordinate[0] = 0.5;
-	vertex[6].coordinate[1] = 0.5;
-	vertex[6].coordinate[2] = -0.5;
+	vertex[6].coordinate[1] = -0.5;
+	vertex[6].coordinate[2] = 0.5;
 
 	vertex[7].coordinate[0] = 0.5;
-	vertex[7].coordinate[1] = 0.5;
-	vertex[7].coordinate[2] = 0.5;
+	vertex[7].coordinate[1] = -0.5;
+	vertex[7].coordinate[2] = -0.5;
 
 	vertex[8].coordinate[0] = 0.5;
-	vertex[8].coordinate[1] = -0.5;
-	vertex[8].coordinate[2] = 0.5;
+	vertex[8].coordinate[1] = 0.5;
+	vertex[8].coordinate[2] = -0.5;
+
 
 	vertex[9].coordinate[0] = 0.5;
-	vertex[9].coordinate[1] = -0.5;
-	vertex[9].coordinate[2] = 0.5;
+	vertex[9].coordinate[1] = 0.5;
+	vertex[9].coordinate[2] = -0.5;
 
 	vertex[10].coordinate[0] = 0.5;
-	vertex[10].coordinate[1] = -0.5;
-	vertex[10].coordinate[2] = -0.5;
+	vertex[10].coordinate[1] = 0.5;
+	vertex[10].coordinate[2] = 0.5;
 
 	vertex[11].coordinate[0] = 0.5;
-	vertex[11].coordinate[1] = 0.5;
-	vertex[11].coordinate[2] = -0.5;
+	vertex[11].coordinate[1] = -0.5;
+	vertex[11].coordinate[2] = 0.5;
 
-	// side 2
+	// left side 
+
 	vertex[12].coordinate[0] = -0.5;
-	vertex[12].coordinate[1] = 0.5;
+	vertex[12].coordinate[1] = -0.5;
 	vertex[12].coordinate[2] = -0.5;
 
 	vertex[13].coordinate[0] = -0.5;
-	vertex[13].coordinate[1] = 0.5;
+	vertex[13].coordinate[1] = -0.5;
 	vertex[13].coordinate[2] = 0.5;
 
 	vertex[14].coordinate[0] = -0.5;
-	vertex[14].coordinate[1] = -0.5;
+	vertex[14].coordinate[1] = 0.5;
 	vertex[14].coordinate[2] = 0.5;
 
 	vertex[15].coordinate[0] = -0.5;
-	vertex[15].coordinate[1] = -0.5;
+	vertex[15].coordinate[1] = 0.5;
 	vertex[15].coordinate[2] = 0.5;
 
 	vertex[16].coordinate[0] = -0.5;
-	vertex[16].coordinate[1] = -0.5;
+	vertex[16].coordinate[1] = 0.5;
 	vertex[16].coordinate[2] = -0.5;
 
 	vertex[17].coordinate[0] = -0.5;
-	vertex[17].coordinate[1] = 0.5;
+	vertex[17].coordinate[1] = -0.5;
 	vertex[17].coordinate[2] = -0.5;
 
-	//// front
-	vertex[18].coordinate[0] = -0.5;
+	//// Back
+	vertex[18].coordinate[0] = 0.5;
 	vertex[18].coordinate[1] = -0.5;
-	vertex[18].coordinate[2] = 0.5;
+	vertex[18].coordinate[2] = -0.5;
 
 	vertex[19].coordinate[0] = -0.5;
-	vertex[19].coordinate[1] = 0.5;
-	vertex[19].coordinate[2] = 0.5;
+	vertex[19].coordinate[1] = -0.5;
+	vertex[19].coordinate[2] = -0.5;
 
-	vertex[20].coordinate[0] = 0.5;
+	vertex[20].coordinate[0] = -0.5;
 	vertex[20].coordinate[1] = 0.5;
-	vertex[20].coordinate[2] = 0.5;
+	vertex[20].coordinate[2] = -0.5;
 
-	vertex[21].coordinate[0] = 0.5;
+	vertex[21].coordinate[0] = -0.5;
 	vertex[21].coordinate[1] = 0.5;
-	vertex[21].coordinate[2] = 0.5;
+	vertex[21].coordinate[2] = -0.5;
 
 	vertex[22].coordinate[0] = 0.5;
-	vertex[22].coordinate[1] = -0.5;
-	vertex[22].coordinate[2] = 0.5;
+	vertex[22].coordinate[1] = 0.5;
+	vertex[22].coordinate[2] = -0.5;
 
-	vertex[23].coordinate[0] = -0.5;
+	vertex[23].coordinate[0] = 0.5;
 	vertex[23].coordinate[1] = -0.5;
-	vertex[23].coordinate[2] = 0.5;
+	vertex[23].coordinate[2] = -0.5;
 
 	// bottom
 	vertex[24].coordinate[0] = -0.5;
@@ -211,27 +217,30 @@ void Game::initialize()
 	// Top
 	vertex[30].coordinate[0] = -0.5;
 	vertex[30].coordinate[1] = 0.5;
-	vertex[30].coordinate[2] = -0.5;
+	vertex[30].coordinate[2] = 0.5;
 
 	vertex[31].coordinate[0] = 0.5;
 	vertex[31].coordinate[1] = 0.5;
-	vertex[31].coordinate[2] = -0.5;
+	vertex[31].coordinate[2] = 0.5;
 
 	vertex[32].coordinate[0] = 0.5;
 	vertex[32].coordinate[1] = 0.5;
-	vertex[32].coordinate[2] = 0.5;
+	vertex[32].coordinate[2] = -0.5;
 
 	vertex[33].coordinate[0] = 0.5;
 	vertex[33].coordinate[1] = 0.5;
-	vertex[33].coordinate[2] = 0.5;
+	vertex[33].coordinate[2] = -0.5;
 
 	vertex[34].coordinate[0] = -0.5;
 	vertex[34].coordinate[1] = 0.5;
-	vertex[34].coordinate[2] = 0.5;
+	vertex[34].coordinate[2] = -0.5;
 
 	vertex[35].coordinate[0] = -0.5;
 	vertex[35].coordinate[1] = 0.5;
-	vertex[35].coordinate[2] = -0.5;
+	vertex[35].coordinate[2] = 0.5;
+
+
+
 
 	for (int i = 0; i < 36; i++)
 	{
@@ -262,8 +271,8 @@ void Game::initialize()
 		vertex[i].texel[0] = 0.0;
 		vertex[i].texel[1] = 1.0;
 
-		vertex[i + 1].texel[0] = 0.0;
-		vertex[i + 1].texel[1] = 0.0;
+		vertex[i + 1].texel[0] = 1.0;
+		vertex[i + 1].texel[1] = 1.0;
 
 		vertex[i + 2].texel[0] = 1.0;
 		vertex[i + 2].texel[1] = 0.0;
@@ -271,12 +280,15 @@ void Game::initialize()
 		vertex[i + 3].texel[0] = 1.0;
 		vertex[i + 3].texel[1] = 0.0;
 
-		vertex[i + 4].texel[0] = 1.0;
-		vertex[i + 4].texel[1] = 1.0;
+		vertex[i + 4].texel[0] = 0.0;
+		vertex[i + 4].texel[1] = 0.0;
 
 		vertex[i + 5].texel[0] = 0.0;
 		vertex[i + 5].texel[1] = 1.0;
 	}
+
+
+
 
 
 	/* Create a new VBO using VBO id */
@@ -328,7 +340,7 @@ void Game::initialize()
 	glShaderSource(vsid, 1, (const GLchar**)&vs_src, NULL); // Set the shaders source
 	glCompileShader(vsid); //Check that the shader compiles
 
-	//Check is Shader Compiled
+						   //Check is Shader Compiled
 	glGetShaderiv(vsid, GL_COMPILE_STATUS, &isCompiled);
 
 	if (isCompiled == GL_TRUE) {
@@ -431,6 +443,11 @@ void Game::initialize()
 	texelID = glGetAttribLocation(progID, "sv_texel");
 	textureID = glGetUniformLocation(progID, "f_texture");
 	glBindAttribLocation(progID, texelID, "sv_position");
+
+
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LESS);
+	glEnable(GL_CULL_FACE);
 }
 
 void Game::update()
@@ -530,7 +547,7 @@ void Game::update()
 	DEBUG_MSG("Update up...");
 #endif
 
-	}
+}
 
 void Game::render()
 {
@@ -540,20 +557,20 @@ void Game::render()
 #endif
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
+
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
 	glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, index);
 
 	/*	As the data positions will be updated by the this program on the
-		CPU bind the updated data to the GPU for drawing	*/
+	CPU bind the updated data to the GPU for drawing	*/
 	glBufferData(GL_ARRAY_BUFFER, sizeof(Vert) * 36, finalVertex, GL_STATIC_DRAW);
 
 	/*	Draw Triangle from VBO	(set where to start from as VBO can contain
-		model components that 'are' and 'are not' to be drawn )	*/
+	model components that 'are' and 'are not' to be drawn )	*/
 
-		//Set Active Texture .... 32
+	//Set Active Texture .... 32
 	glActiveTexture(GL_TEXTURE0);
 	glUniform1i(textureID, 0);
 
@@ -562,7 +579,7 @@ void Game::render()
 	glVertexAttribPointer(positionID, 3, GL_FLOAT, GL_FALSE, sizeof(Vert), 0);
 	glVertexAttribPointer(colorID, 4, GL_FLOAT, GL_FALSE, sizeof(Vert), (void*)(3 * sizeof(float)));
 	glVertexAttribPointer(texelID, 2, GL_FLOAT, GL_FALSE, sizeof(Vert), (void*)(7 * sizeof(float)));
-	
+
 	//Enable Arrays
 	glEnableVertexAttribArray(positionID);
 	glEnableVertexAttribArray(colorID);
