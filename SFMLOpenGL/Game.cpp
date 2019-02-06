@@ -1,3 +1,5 @@
+// Robin Meyler
+
 #include <Game.h>
 
 static bool flip;
@@ -62,7 +64,7 @@ texelID;	// Texel ID
 			//const string filename = "texture.tga";
 			//const string filename = "cube.tga";
 
-const string filename = "doggo.tga";
+const string filename = "minecraft.tga";
 
 int width; //width of texture
 int height; //height of texture
@@ -239,9 +241,7 @@ void Game::initialize()
 	vertex[35].coordinate[1] = 0.5;
 	vertex[35].coordinate[2] = 0.5;
 
-
-
-
+	// Colour is random 0 - 1.0
 	for (int i = 0; i < 36; i++)
 	{
 		vertex[i].color[0] = (rand() % 11) / 10.0f;
@@ -262,34 +262,71 @@ void Game::initialize()
 		finalVertex[i].coordinate[0] += trans.x;
 		finalVertex[i].coordinate[1] += trans.y;
 	}
+	float block = 106;
+	float blockWidth = 512;
+	float startX = 56.0f;
+	float startY = 16.0f;
 
-
-
-
-	for (int i = 0; i < 36; i = i + 6)
+	//Sides
+	for (int i = 0; i < 24; i = i + 6)
 	{
-		vertex[i].texel[0] = 0.0;
-		vertex[i].texel[1] = 1.0;
+		vertex[i].texel[0] = startX / blockWidth;
+		vertex[i].texel[1] = (startY + (2 * block)) / blockWidth;
 
-		vertex[i + 1].texel[0] = 1.0;
-		vertex[i + 1].texel[1] = 1.0;
+		vertex[i + 1].texel[0] = (startX + block) / blockWidth;
+		vertex[i + 1].texel[1] = (startY + (2 * block)) / blockWidth;
 
-		vertex[i + 2].texel[0] = 1.0;
-		vertex[i + 2].texel[1] = 0.0;
+		vertex[i + 2].texel[0] = (startX + block) / blockWidth;
+		vertex[i + 2].texel[1] = (startY + block) / blockWidth;
 
-		vertex[i + 3].texel[0] = 1.0;
-		vertex[i + 3].texel[1] = 0.0;
+		vertex[i + 3].texel[0] = (startX + block) / blockWidth;
+		vertex[i + 3].texel[1] = (startY + block) / blockWidth;
 
-		vertex[i + 4].texel[0] = 0.0;
-		vertex[i + 4].texel[1] = 0.0;
+		vertex[i + 4].texel[0] = (startX) / blockWidth;
+		vertex[i + 4].texel[1] = (startY + block) / blockWidth;
 
-		vertex[i + 5].texel[0] = 0.0;
-		vertex[i + 5].texel[1] = 1.0;
+		vertex[i + 5].texel[0] = startX / blockWidth;
+		vertex[i + 5].texel[1] = (startY + (2 * block)) / blockWidth;
 	}
 
+	// bottom
+	vertex[24].texel[0] = (startX + (2 * block)) / blockWidth;
+	vertex[24].texel[1] = (startY + (3* block)) / blockWidth;
+
+	vertex[25].texel[0] = (startX + (3 * block)) / blockWidth;
+	vertex[25].texel[1] = (startY + (3 * block)) / blockWidth;
+
+	vertex[26].texel[0] = (startX + (3 * block)) / blockWidth;
+	vertex[26].texel[1] = (startY + (2 * block)) / blockWidth;
+
+	vertex[27].texel[0] = (startX + (3 * block)) / blockWidth;
+	vertex[27].texel[1] = (startY + (2 * block)) / blockWidth;
+
+	vertex[28].texel[0] = (startX + (2 * block)) / blockWidth;
+	vertex[28].texel[1] = (startY + (2 * block)) / blockWidth;
+
+	vertex[29].texel[0] = (startX + (2 * block)) / blockWidth;
+	vertex[29].texel[1] = (startY + (3 * block)) / blockWidth;
 
 
+	// Top
+	vertex[30].texel[0] = startX / blockWidth;
+	vertex[30].texel[1] = (startY + block) / blockWidth;
 
+	vertex[31].texel[0] = (startX + block )/ blockWidth;
+	vertex[31].texel[1] = (startY + block) / blockWidth;
+
+	vertex[32].texel[0] = (startX + block) / blockWidth;
+	vertex[32].texel[1] = (startY) / blockWidth;
+
+	vertex[33].texel[0] = (startX + block) / blockWidth;
+	vertex[33].texel[1] = (startY) / blockWidth;
+
+	vertex[34].texel[0] = startX / blockWidth;
+	vertex[34].texel[1] = (startY) / blockWidth;
+
+	vertex[35].texel[0] = startX / blockWidth;
+	vertex[35].texel[1] = (startY + block) / blockWidth;
 
 	/* Create a new VBO using VBO id */
 	glGenBuffers(1, vbo);
