@@ -262,71 +262,72 @@ void Game::initialize()
 		finalVertex[i].coordinate[0] += trans.x;
 		finalVertex[i].coordinate[1] += trans.y;
 	}
-	float block = 106;
-	float blockWidth = 512;
+
+	float blockWidth = 106;
+	float textureWidth = 512;
 	float startX = 56.0f;
 	float startY = 16.0f;
 
 	//Sides
 	for (int i = 0; i < 24; i = i + 6)
 	{
-		vertex[i].texel[0] = startX / blockWidth;
-		vertex[i].texel[1] = (startY + (2 * block)) / blockWidth;
+		vertex[i].texel[0] = startX / textureWidth;
+		vertex[i].texel[1] = (startY + (2 * blockWidth)) / textureWidth;
 
-		vertex[i + 1].texel[0] = (startX + block) / blockWidth;
-		vertex[i + 1].texel[1] = (startY + (2 * block)) / blockWidth;
+		vertex[i + 1].texel[0] = (startX + blockWidth) / textureWidth;
+		vertex[i + 1].texel[1] = (startY + (2 * blockWidth)) / textureWidth;
 
-		vertex[i + 2].texel[0] = (startX + block) / blockWidth;
-		vertex[i + 2].texel[1] = (startY + block) / blockWidth;
+		vertex[i + 2].texel[0] = (startX + blockWidth) / textureWidth;
+		vertex[i + 2].texel[1] = (startY + blockWidth) / textureWidth;
 
-		vertex[i + 3].texel[0] = (startX + block) / blockWidth;
-		vertex[i + 3].texel[1] = (startY + block) / blockWidth;
+		vertex[i + 3].texel[0] = (startX + blockWidth) / textureWidth;
+		vertex[i + 3].texel[1] = (startY + blockWidth) / textureWidth;
 
-		vertex[i + 4].texel[0] = (startX) / blockWidth;
-		vertex[i + 4].texel[1] = (startY + block) / blockWidth;
+		vertex[i + 4].texel[0] = (startX) / textureWidth;
+		vertex[i + 4].texel[1] = (startY + blockWidth) / textureWidth;
 
-		vertex[i + 5].texel[0] = startX / blockWidth;
-		vertex[i + 5].texel[1] = (startY + (2 * block)) / blockWidth;
+		vertex[i + 5].texel[0] = startX / textureWidth;
+		vertex[i + 5].texel[1] = (startY + (2 * blockWidth)) / textureWidth;
 	}
 
 	// bottom
-	vertex[24].texel[0] = (startX + (2 * block)) / blockWidth;
-	vertex[24].texel[1] = (startY + (3* block)) / blockWidth;
+	vertex[24].texel[0] = (startX + (2 * blockWidth)) / textureWidth;
+	vertex[24].texel[1] = (startY + (3* blockWidth)) / textureWidth;
 
-	vertex[25].texel[0] = (startX + (3 * block)) / blockWidth;
-	vertex[25].texel[1] = (startY + (3 * block)) / blockWidth;
+	vertex[25].texel[0] = (startX + (3 * blockWidth)) / textureWidth;
+	vertex[25].texel[1] = (startY + (3 * blockWidth)) / textureWidth;
 
-	vertex[26].texel[0] = (startX + (3 * block)) / blockWidth;
-	vertex[26].texel[1] = (startY + (2 * block)) / blockWidth;
+	vertex[26].texel[0] = (startX + (3 * blockWidth)) / textureWidth;
+	vertex[26].texel[1] = (startY + (2 * blockWidth)) / textureWidth;
 
-	vertex[27].texel[0] = (startX + (3 * block)) / blockWidth;
-	vertex[27].texel[1] = (startY + (2 * block)) / blockWidth;
+	vertex[27].texel[0] = (startX + (3 * blockWidth)) / textureWidth;
+	vertex[27].texel[1] = (startY + (2 * blockWidth)) / textureWidth;
 
-	vertex[28].texel[0] = (startX + (2 * block)) / blockWidth;
-	vertex[28].texel[1] = (startY + (2 * block)) / blockWidth;
+	vertex[28].texel[0] = (startX + (2 * blockWidth)) / textureWidth;
+	vertex[28].texel[1] = (startY + (2 * blockWidth)) / textureWidth;
 
-	vertex[29].texel[0] = (startX + (2 * block)) / blockWidth;
-	vertex[29].texel[1] = (startY + (3 * block)) / blockWidth;
+	vertex[29].texel[0] = (startX + (2 * blockWidth)) / textureWidth;
+	vertex[29].texel[1] = (startY + (3 * blockWidth)) / textureWidth;
 
 
 	// Top
-	vertex[30].texel[0] = startX / blockWidth;
-	vertex[30].texel[1] = (startY + block) / blockWidth;
+	vertex[30].texel[0] = startX / textureWidth;
+	vertex[30].texel[1] = (startY + blockWidth) / textureWidth;
 
-	vertex[31].texel[0] = (startX + block )/ blockWidth;
-	vertex[31].texel[1] = (startY + block) / blockWidth;
+	vertex[31].texel[0] = (startX + blockWidth)/ textureWidth;
+	vertex[31].texel[1] = (startY + blockWidth) / textureWidth;
 
-	vertex[32].texel[0] = (startX + block) / blockWidth;
-	vertex[32].texel[1] = (startY) / blockWidth;
+	vertex[32].texel[0] = (startX + blockWidth) / textureWidth;
+	vertex[32].texel[1] = (startY) / textureWidth;
 
-	vertex[33].texel[0] = (startX + block) / blockWidth;
-	vertex[33].texel[1] = (startY) / blockWidth;
+	vertex[33].texel[0] = (startX + blockWidth) / textureWidth;
+	vertex[33].texel[1] = (startY) / textureWidth;
 
-	vertex[34].texel[0] = startX / blockWidth;
-	vertex[34].texel[1] = (startY) / blockWidth;
+	vertex[34].texel[0] = startX / textureWidth;
+	vertex[34].texel[1] = (startY) / textureWidth;
 
-	vertex[35].texel[0] = startX / blockWidth;
-	vertex[35].texel[1] = (startY + block) / blockWidth;
+	vertex[35].texel[0] = startX / textureWidth;
+	vertex[35].texel[1] = (startY + blockWidth) / textureWidth;
 
 	/* Create a new VBO using VBO id */
 	glGenBuffers(1, vbo);
@@ -343,19 +344,7 @@ void Game::initialize()
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLubyte) * 36, triangles, GL_STATIC_DRAW);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
-	//layout(location = 0) in vec3 aPos;
-	//layout(location = 1) in vec3 aColor;
-	//layout(location = 2) in vec2 aTexCoord;
 
-	//out vec3 ourColor;
-	//out vec2 TexCoord;
-
-	//void main()
-	//{
-	//	gl_Position = vec4(aPos, 1.0);
-	//	ourColor = aColor;
-	//	TexCoord = aTexCoord;
-	//}
 
 	/* Vertex Shader which would normally be loaded from an external file */
 	const char* vs_src = "#version 400\n\r"
@@ -472,7 +461,7 @@ void Game::initialize()
 		GL_RGBA, //Bitmap
 		GL_UNSIGNED_BYTE,
 		img_data);
-	glEnable(GL_DEPTH_TEST);
+	//glEnable(GL_DEPTH_TEST);
 	// Find variables in the shader
 	//https://www.khronos.org/opengles/sdk/docs/man/xhtml/glGetAttribLocation.xml
 	positionID = glGetAttribLocation(progID, "sv_position");
